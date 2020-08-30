@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Express Server</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" lang="javascript">
+        $(document).ready(function(){
+            var newDataItem;
+            $("#sendData").click(function(){
+                newDataItem=$("#newDataItem").val();
+                $.post("http://localhost:3000/sendData",{name: newDataItem}, function(data){
+                    alert(data);
+                });
+            });
+        });
+
+        $(document).ready(function(){
+            $("#loadData").click(function(){
+                $.get("http://localhost:3000/getData", function(data){
+                    alert(data);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h3>Hey, Save or load the list?</h3>
+    <p><label for="newDataItem">Enter data: </label><input type="text" id="newDataItem" placeholder="content"/></p>
+    <input type="button" id="sendData" value="Save File">
+    <input type="button" id="loadData" value="Load File">
+    <div class="jsonData">
+</body>
+</html>
